@@ -1,0 +1,29 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Checkout') {
+            steps {
+                git branch: 'main', credentialsId: 'Jagriti', url: 'https://github.com/JagritiDubey123/Jenkins.git'
+            }
+        }
+
+        stage('Build and Deploy Frontend') {
+            steps {
+                sh 'cd FrontEnd && npm install && npm run build && npm run deploy'
+                sshagent(credentials: ['']) {
+                    sh 'scp -r FrontEnd/dist jenkins-connection@34.28.25.47:/"D:\giit-node-application-master\giit-node-application-master\FrontEnd"'
+                }
+            }
+        }
+
+        stage('Build and Deploy Backend') {
+            steps {
+                sh 'cd backend && npm install'
+                sshagent(credentials: ['Jagriti']) {
+                    sh 'scp -r backend jenkins-connection@34.28.25.47:"D:\giit-node-application-master\giit-node-application-master\backend"'
+                }
+            }
+        }
+    }
+}
