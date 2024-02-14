@@ -19,7 +19,7 @@ pipeline {
             steps {
                 script {
                     // Build Docker image
-                    sh "docker build -f FrontEnd/Dockerfile ."
+                    sh "sudo docker build -f FrontEnd/Dockerfile ."
                 }
             }
         }
