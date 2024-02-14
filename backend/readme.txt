@@ -1,7 +1,7 @@
 Please run the following command to create the table before run the app.js
 good morning
 1. create database employees_db
-
+hiiiii
 2. CREATE TABLE IF NOT EXISTS `EMPLOYEES` (
    emp_id int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
    emp_name varchar(255) NOT NULL,
