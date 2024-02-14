@@ -1,5 +1,5 @@
 Please run the following command to create the table before run the app.js
-
+good morning
 1. create database employees_db
 
 2. CREATE TABLE IF NOT EXISTS `EMPLOYEES` (
