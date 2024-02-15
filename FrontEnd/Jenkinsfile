@@ -6,7 +6,7 @@ pipeline {
         IMAGE_NAME = "frontend"  // Your Docker image name
         TAG = "latest"  // Tag for your Docker image
         GCP_PROJECT_ID = "jagriti-411012"  // Your GCP project ID
-        GCP_SERVICE_ACCOUNT_KEY = credentials('c65bfeb17519d65f69aa9c1541d6229b0f550e1e')  // Jenkins credentials for GCP service account key file
+        GCP_SERVICE_ACCOUNT_KEY = credentials('GCP_ID')  // Jenkins credentials for GCP service account key file
     }
 
     stages {
@@ -28,7 +28,7 @@ pipeline {
             steps {
                 script {
                     // Authenticate with GCP
-                    withCredentials([file(credentialsId: 'c65bfeb17519d65f69aa9c1541d6229b0f550e1e', variable: 'GCP_SERVICE_ACCOUNT_KEY_FILE')]) {
+                    withCredentials([file(credentialsId: 'GCP_ID', variable: 'GCP_SERVICE_ACCOUNT_KEY_FILE')]) {
                         sh "gcloud auth activate-service-account --key-file=${GCP_SERVICE_ACCOUNT_KEY_FILE}"
                     }
 
