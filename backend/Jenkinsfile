@@ -24,21 +24,21 @@ pipeline {
             }
         }
 
-        stage('Push Docker Image to GCR') {
-            steps {
-                script {
-                    // Authenticate with GCP
-                    withCredentials([file(credentialsId: 'GCP_ID', variable: 'GCP_SERVICE_ACCOUNT_KEY_FILE')]) {
-                        sh "gcloud auth activate-service-account --key-file=${GCP_SERVICE_ACCOUNT_KEY_FILE}"
-                    }
+        // stage('Push Docker Image to GCR') {
+        //     steps {
+        //         script {
+        //             // Authenticate with GCP
+        //             withCredentials([file(credentialsId: 'GCP_ID', variable: 'GCP_SERVICE_ACCOUNT_KEY_FILE')]) {
+        //                 sh "gcloud auth activate-service-account --key-file=${GCP_SERVICE_ACCOUNT_KEY_FILE}"
+        //             }
 
-                    // Tag Docker image with GCR URL
-                    sh "docker tag ${DOCKER_REGISTRY}/${GCP_PROJECT_ID}/${IMAGE_NAME}:${TAG} ${DOCKER_REGISTRY}/${GCP_PROJECT_ID}/${IMAGE_NAME}:${TAG}"
+        //             // Tag Docker image with GCR URL
+        //             sh "docker tag ${DOCKER_REGISTRY}/${GCP_PROJECT_ID}/${IMAGE_NAME}:${TAG} ${DOCKER_REGISTRY}/${GCP_PROJECT_ID}/${IMAGE_NAME}:${TAG}"
 
-                    // Push Docker image to GCR
-                    sh "docker push ${DOCKER_REGISTRY}/${GCP_PROJECT_ID}/${IMAGE_NAME}:${TAG}"
-                }
-            }
-        }
+        //             // Push Docker image to GCR
+        //             sh "docker push ${DOCKER_REGISTRY}/${GCP_PROJECT_ID}/${IMAGE_NAME}:${TAG}"
+        //         }
+        //     }
+        // }
     }
 }
