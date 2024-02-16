@@ -36,7 +36,7 @@ pipeline {
                     sh "docker tag ${DOCKER_REGISTRY}/${GCP_PROJECT_ID}/${IMAGE_NAME}:${TAG} ${DOCKER_REGISTRY}/${GCP_PROJECT_ID}/${IMAGE_NAME}:${TAG}"
 
                     // Push Docker image to GCR
-                    sh "docker push ${DOCKER_REGISTRY}/${GCP_PROJECT_ID}/${IMAGE_NAME}:${TAG}"
+                    sh "docker push ${GCP_PROJECT_ID}/${DOCKER_REGISTRY}/${IMAGE_NAME}:${TAG}"
                 }
             }
         }
