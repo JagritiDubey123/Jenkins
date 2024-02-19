@@ -23,7 +23,7 @@ pipeline {
                     // Build Docker image
                     sh "docker build -f FrontEnd/Dockerfile ."
                     sh "docker build -f backend/Dockerfile ."
-                    sh "docker build -f mysql ."
+                    sh "docker build -f mysql/Dockerfile ."
                 }
             }
         }
