@@ -51,10 +51,10 @@ pipeline {
         stage('Create and Run Docker Container'){
             steps{
                 script{
-                    sh 'docker network create my-network5'
-                    sh 'docker run -d --name frontend5 -p 5000:5000 --network=my-network5 ${DOCKER_REGISTRY}/${GCP_PROJECT_ID}/${IMAGE_NAME}:${TAG}'
-                    sh 'docker run -d --name backend5 -p 8000:8000 --network=my-network5 ${DOCKER_REGISTRY}/${GCP_PROJECT_ID}/${image2}:${TAG}'
-                     sh 'docker run -d --name mysql5 -p 3306:3306 --network=my-network5 ${DOCKER_REGISTRY}/${GCP_PROJECT_ID}/${image3}:${TAG}'
+                    sh 'docker network create my-network6'
+                    sh 'docker run -d --name frontend6 -p 5000:5000 --network=my-network6 ${DOCKER_REGISTRY}/${GCP_PROJECT_ID}/${IMAGE_NAME}:${TAG}'
+                    sh 'docker run -d --name backend6 -p 8000:8000 --network=my-network6 ${DOCKER_REGISTRY}/${GCP_PROJECT_ID}/${image2}:${TAG}'
+                     sh 'docker run -d --name mysql6 -p 3306:3306 --network=my-network6 ${DOCKER_REGISTRY}/${GCP_PROJECT_ID}/${image3}:${TAG}'
         }
             }
         }
