@@ -5,6 +5,7 @@ pipeline {
         DOCKER_REGISTRY = "gcr.io"  // Your GCR registry URL
         IMAGE_NAME = "frontend" // Your Docker image name
         image2 = "backend"
+        image3 = "mysql"
         TAG = "latest"  // Tag for your Docker image
         GCP_PROJECT_ID = "jagriti-411012"  // Your GCP project ID
         GCP_SERVICE_ACCOUNT_KEY = credentials('GCP_ID')  // Jenkins credentials for GCP service account key file
@@ -22,6 +23,7 @@ pipeline {
                     // Build Docker image
                     sh "docker build -f FrontEnd/Dockerfile ."
                     sh "docker build -f backend/Dockerfile ."
+                    sh "docker build -f mysql ."
                 }
             }
         }
