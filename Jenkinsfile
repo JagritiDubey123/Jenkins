@@ -52,9 +52,9 @@ pipeline {
             steps{
                 script{
                     sh 'docker network create my-network1'
-                    sh 'docker run -d --name frontend2 -p 5000:5000 --network=my-network1 ${DOCKER_REGISTRY}/${GCP_PROJECT_ID}/${IMAGE_NAME}:${TAG}'
-                    sh 'docker run -d --name backend1 -p 8000:8000 --network=my-network1 ${DOCKER_REGISTRY}/${GCP_PROJECT_ID}/${image2}:${TAG}'
-                     sh 'docker run -d --name mysql1 -p 3306:3306 --network=my-network1 ${DOCKER_REGISTRY}/${GCP_PROJECT_ID}/${image3}:${TAG}'
+                    sh 'docker run -d --name frontend3 -p 5000:5000 --network=my-network2 ${DOCKER_REGISTRY}/${GCP_PROJECT_ID}/${IMAGE_NAME}:${TAG}'
+                    sh 'docker run -d --name backend2 -p 8000:8000 --network=my-network2 ${DOCKER_REGISTRY}/${GCP_PROJECT_ID}/${image2}:${TAG}'
+                     sh 'docker run -d --name mysql2 -p 3306:3306 --network=my-network2 ${DOCKER_REGISTRY}/${GCP_PROJECT_ID}/${image3}:${TAG}'
         }
             }
         }
