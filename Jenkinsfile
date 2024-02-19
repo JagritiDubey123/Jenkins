@@ -48,5 +48,22 @@ pipeline {
                 }
             }
         }
-    }
+        stage('Create and Run Docker Container'){
+            steps{
+                script{
+                    sh 'docker network create my-network'
+                    sh 'docker run -d --name frontend -p 5000:5000 --network=my-network ${DOCKER_REGISTRY}/${GCP_PROJECT_ID}/${IMAGE_NAME}:${TAG}'
+                    sh 'docker run -d --name backend -p 8000:8000 --network=my-network ${DOCKER_REGISTRY}/${GCP_PROJECT_ID}/${image2}:${TAG}'
+                     sh 'docker run -d --name mysql -p 3306:3306 --network=my-network ${DOCKER_REGISTRY}/${GCP_PROJECT_ID}/${image3}:${TAG}'
+        }
+            }
+        }
+        stage('Configure and Verify Deployment'){
+            steps{
+                script{
+                     sh 'docker exec -it backend sed -i "s/DB_HOST=127.0.0.1/DB_HOST=mysql/" /app/config.js'
+                     sh ' docker ps'
+                }
+            }
+        }
 }
