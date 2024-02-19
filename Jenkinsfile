@@ -58,13 +58,13 @@ pipeline {
         }
             }
         }
-        stage('Configure and Verify Deployment'){
-            steps{
-                script{
-                     sh 'docker exec -it backend sed -i "s/DB_HOST=127.0.0.1/DB_HOST=mysql/" /app/config.js'
-                     sh ' docker ps'
-                }
-            }
-        }
+        // stage('Configure and Verify Deployment'){
+        //     steps{
+        //         script{
+        //              sh 'docker exec -it backend sed -i "s/DB_HOST=127.0.0.1/DB_HOST=mysql/" /app/config.js'
+        //              sh ' docker ps'
+        //         }
+        //     }
+        // }
 }
 }
