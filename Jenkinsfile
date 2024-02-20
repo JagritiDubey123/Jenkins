@@ -51,16 +51,16 @@ pipeline {
         stage('Create and Run Docker Container'){
             steps{
                 script{
-                    sh 'docker network create bridge'
+                    sh 'docker network inspect bridge'
         //         }
         //     }
         // }
         // // stage ('Create conatiner'){
         // //     steps{
         // //         script{
-                    sh 'docker run -d --name frontend9 -p 5000:5000 --network=bridge ${DOCKER_REGISTRY}/${GCP_PROJECT_ID}/${IMAGE_NAME}:${TAG}'
-                    sh 'docker run -d --name backend9 -p 8000:8000 --network=bridge ${DOCKER_REGISTRY}/${GCP_PROJECT_ID}/${image2}:${TAG}'
-                     sh 'docker run -d --name mysql9 -p 3306:3306 --network=bridge ${DOCKER_REGISTRY}/${GCP_PROJECT_ID}/${image3}:${TAG}'
+                    sh 'docker run -d --name frontend3 -p 5000:5000 --network=bridge ${DOCKER_REGISTRY}/${GCP_PROJECT_ID}/${IMAGE_NAME}:${TAG}'
+                    sh 'docker run -d --name backend3 -p 8000:8000 --network=bridge ${DOCKER_REGISTRY}/${GCP_PROJECT_ID}/${image2}:${TAG}'
+                     sh 'docker run -d --name mysql3 -p 3306:3306 --network=bridge ${DOCKER_REGISTRY}/${GCP_PROJECT_ID}/${image3}:${TAG}'
         }
             }
         }
