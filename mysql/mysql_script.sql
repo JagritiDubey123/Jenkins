@@ -4,8 +4,8 @@ CREATE TABLE  EMPLOYEES (
     emp_id INT AUTO_INCREMENT PRIMARY KEY,
     emp_name VARCHAR(50) NOT NULL,
      emp_contact INT,
-    emp_add VARCHAR(250),
-);
+    emp_add VARCHAR(250)
+)
 INSERT INTO EMPLOYEES (emp_id,emp_name, emp_contact, emp_add)
 VALUES
     (1,'Jagriti', 7007220804, "Gorakhpur"),
