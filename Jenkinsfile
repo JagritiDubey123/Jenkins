@@ -51,16 +51,16 @@ pipeline {
         stage('Create and Run Docker Container'){
             steps{
                 script{
-                    sh 'docker network create my_custom_bridge'
+                    sh 'docker network create custom_bridge'
         //         }
         //     }
         // }
         // // stage ('Create conatiner'){
         // //     steps{
         // //         script{
-                    sh 'docker run -d --name frontend4 -p 5000:5000 --network=my_custom_bridge ${DOCKER_REGISTRY}/${GCP_PROJECT_ID}/${IMAGE_NAME}:${TAG}'
-                    sh 'docker run -d --name backend4 -p 8000:8000 --network=my_custom_bridge ${DOCKER_REGISTRY}/${GCP_PROJECT_ID}/${image2}:${TAG}'
-                     sh 'docker run -d --name mysql4 -p 3306:3306 --network=my_custom_bridge ${DOCKER_REGISTRY}/${GCP_PROJECT_ID}/${image3}:${TAG}'
+                    sh 'docker run -d --name frontend1 -p 5000:5000 --network=custom_bridge ${DOCKER_REGISTRY}/${GCP_PROJECT_ID}/${IMAGE_NAME}:${TAG}'
+                    sh 'docker run -d --name backend1 -p 8000:8000 --network=custom_bridge ${DOCKER_REGISTRY}/${GCP_PROJECT_ID}/${image2}:${TAG}'
+                     sh 'docker run -d --name mysql1 -p 3306:3306 --network=custom_bridge ${DOCKER_REGISTRY}/${GCP_PROJECT_ID}/${image3}:${TAG}'
         }
             }
         }
