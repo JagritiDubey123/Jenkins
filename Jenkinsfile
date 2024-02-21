@@ -17,6 +17,11 @@ pipeline {
                 git branch: 'main', credentialsId: '1', url: 'https://github.com/JagritiDubey123/Jenkins.git'
             }
         }
+        stage('Cleanup Workspace') {
+            steps {
+                deleteDir()
+            }
+        }
         stage('Build Docker Image') {
             steps {
                 script {
